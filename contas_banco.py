@@ -11,16 +11,22 @@ class ContaCorrente():
     def consultar_saldo (self):
         print('Seu saldo atual é de R${:,.2f}'.format(self.saldo)) 
     
-    def depositar_ou_sacar (self, valor):
+    def depositar (self, valor):
         self.saldo += valor
-        print('Seu saldo atual é de R${:,.2f}'.format(self.saldo)) 
+        print('Você depositou {}. Seu saldo atual é de R${:,.2f}'.format(valor, self.saldo)) 
+    
+    def sacar (self, valor):
+        self.saldo -= valor
+        print('Você sacou {}. Seu saldo atual é de R${:,.2f}'.format(valor, self.saldo)) 
 
 
 #programa
 
 conta_vinicius = ContaCorrente("Marcus Vinicius", 15311742720)
 # print(conta_vinicius.nome, conta_vinicius.cpf, conta_vinicius.saldo)
-print(conta_vinicius.depositar_ou_sacar(100))
+
+print(conta_vinicius.depositar(10000))
+print(conta_vinicius.sacar(10))
 print(conta_vinicius.consultar_saldo())
 # print(conta_vinicius.depositar_ou_sacar(-20))
 
