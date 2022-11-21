@@ -17,16 +17,21 @@ class ContaCorrente():
         print('Você depositou {}. Seu saldo atual é de R${:,.2f}'.format(valor, self.saldo)) 
     
     def sacar (self, valor):
-        if self.saldo - valor < self.limite_conta(): 
+        if self.saldo - valor < self._limite_conta(): 
             print('Saldo insuficiente')
         else:
             self.saldo -= valor
             print('Você sacou {}. Seu saldo atual é de R${:,.2f}'.format(valor, self.saldo))
             # self.consultar_saldo()
 
-    def limite_conta(self):
+#o underline indica que tal método é usada apenas na parte da classe e não pode ser utilizado na seção de programa - método privado
+
+    def _limite_conta(self):
         self.limite = -1000
         return self.limite
+
+    def consultar_limite_cheque_especial(self):
+        print('Seu limite de cheque especial é de R${:,.2f}'.format(self._limite_conta())) 
 
 
 #programa
@@ -36,4 +41,5 @@ conta_vinicius = ContaCorrente("Marcus Vinicius", 15311742720)
 
 print(conta_vinicius.depositar(100))
 print(conta_vinicius.sacar(1100))
+conta_vinicius.consultar_limite_cheque_especial()
 
