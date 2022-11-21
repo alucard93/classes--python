@@ -2,9 +2,10 @@ import os
 os.system('cls')
 
 #__init__ - quando eu chamar a class Tv automaticamente ele vai chamar a função do metodo
-
+# sempre que vc estiver dentro de uma classe e quiser referenciar a classe pode usar o 'self'
+#ex: self.cor = 'preta'  pode-se ler que é uma variavel cor da classe Tv // parametro cor da classe Tv
 class Tv:
-    
+
 #self.atributo igual ao valor inicial
     def __init__(self):
         self.cor = 'preta'
