@@ -1,3 +1,5 @@
+import os
+os.system('cls')
 # # class Computador:
 # #     def __init__(self, marca, memoria_ram, placa_de_video) -> None:
 # #         self.marca          = marca
@@ -74,72 +76,89 @@
 # print(Cachorro.quantidade_banho_geral)
 # # 3 
 
-class Cachorro:
-    ...
-    def __init__(self, nome):
-        self.nome = nome # atributo de instância
-    ...
-fred = Cachorro('fred')
-bili = Cachorro('bili')
+# class Cachorro:
+#     ...
+#     def __init__(self, nome):
+#         self.nome = nome # atributo de instância
+#     ...
+# fred = Cachorro('fred')
+# bili = Cachorro('bili')
 
-print(fred.nome)
-# fred
-print(bili.nome)
-# bili
+# print(fred.nome)
+# # fred
+# print(bili.nome)
+# # bili
 
-class Cachorro:
-    nome_cientifico = 'canis lupus familiaris'
-    quantidade_banho_geral = 0
-    dias_para_passear = set()
+# class Cachorro:
+#     nome_cientifico = 'canis lupus familiaris'
+#     quantidade_banho_geral = 0
+#     dias_para_passear = set()
 
-    def __init__(self, nome):
-      self.nome = nome
+#     def __init__(self, nome):
+#       self.nome = nome
 
-    def tomar_banho(self):
-      Cachorro.quantidade_banho_geral += 1
+#     def tomar_banho(self):
+#       Cachorro.quantidade_banho_geral += 1
 
-    def passear(self, *args):
-      for dia in args:
-        self.dias_para_passear.add(dia)
-		  # Ou
-        self.dias_para_passear.update(args)
+#     def passear(self, *args):
+#       for dia in args:
+#         self.dias_para_passear.add(dia)
+# 		  # Ou
+#         self.dias_para_passear.update(args)
 
-fred = Cachorro('fred')
-bili = Cachorro('bili')
+# fred = Cachorro('fred')
+# bili = Cachorro('bili')
 
-fred.passear('seg', 'qua', 'sex')
-print(fred.dias_para_passear)
-# {'sex', 'seg', 'qua'}
+# fred.passear('seg', 'qua', 'sex')
+# print(fred.dias_para_passear)
+# # {'sex', 'seg', 'qua'}
 
-bili.passear('ter', 'qui', 'dom')
-print(bili.dias_para_passear)
-# {'seg', 'dom', 'qua', 'qui', 'sex', 'ter'}
+# bili.passear('ter', 'qui', 'dom')
+# print(bili.dias_para_passear)
+# # {'seg', 'dom', 'qua', 'qui', 'sex', 'ter'}
 
-class Cachorro:
-    # Compartilhado com todas as instâncias
-    nome_cientifico = 'canis lupus familiaris'
-    quantidade_banho_geral = 0
+# class Cachorro:
+#     # Compartilhado com todas as instâncias
+#     nome_cientifico = 'canis lupus familiaris'
+#     quantidade_banho_geral = 0
 
-    def __init__(self, nome):
-      self.nome = nome
-      self.dias_para_passear = set()
+#     def __init__(self, nome):
+#       self.nome = nome
+#       self.dias_para_passear = set()
 
-    def tomar_banho(self):
-      Cachorro.quantidade_banho += 1
+#     def tomar_banho(self):
+#       Cachorro.quantidade_banho += 1
 
-    def passear(self, *args):
-      for dia in args:
-        self.dias_para_passear.add(dia)
-		  # Ou
-        self.dias_para_passear.update(args)
+#     def passear(self, *args):
+#       for dia in args:
+#         self.dias_para_passear.add(dia)
+# 		  # Ou
+#         self.dias_para_passear.update(args)
 
-fred = Cachorro('fred')
-bili = Cachorro('bili')
+# fred = Cachorro('fred')
+# bili = Cachorro('bili')
 
-fred.passear('seg', 'qua', 'sex')
-print(fred.dias_para_passear)
-# {'seg', 'qua', 'sex'}
+# fred.passear('seg', 'qua', 'sex')
+# print(fred.dias_para_passear)
+# # {'seg', 'qua', 'sex'}
 
-bili.passear('ter', 'qui', 'dom')
-print(bili.dias_para_passear)
-# {'qui', 'ter', 'dom'}
+# bili.passear('ter', 'qui', 'dom')
+# print(bili.dias_para_passear)
+# # {'qui', 'ter', 'dom'}
+
+class Testando:
+    #variavel de classe
+    teste = 123
+    
+
+    #variavel de instancia
+    def __init__(self):
+        self.teste = 321
+
+testando1 = Testando()
+testando2 = Testando()
+
+#instancia seguido da variavel ou nome da classe com variavel
+ 
+print(testando1.teste)
+print(Testando.teste)
