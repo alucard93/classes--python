@@ -26,11 +26,16 @@ class Agencia:
         self.clientes.append((nome, cpf, patrimonio))
 
 
-#problema
-agencia1 = Agencia(22223333, 2000000000000, 4568)
-agencia1.caixa = 1000000
-agencia1.verificar_caixa()
-agencia1.emprestar_dinheiro(1500, 153000000, 0.2)
-print(agencia1.emprestimos)
-agencia1.adicionar_cliente('nascimento', 1534455555, 10000)
-print(agencia1.clientes)
+class AgenciaVirtual(Agencia):
+    pass
+
+
+class AgenciaComum(Agencia):
+    pass
+
+
+class AgenciaPremium(Agencia):
+    pass
+
+
+
