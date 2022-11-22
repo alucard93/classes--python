@@ -1,20 +1,32 @@
+from datetime import datetime
+import pytz 
 import os
 os.system('cls')
 
+
 class ContaCorrente():
-    #o atributo nome da classe - vai ser o nome passado na criação
-    def __init__(self, nome, cpf) -> None:
+
+    @staticmethod
+    def _data_hora():
+        fuso_BR = pytz.timezone('Brazil/East')
+        horario_BR = datetime.now(fuso_BR)
+        return horario_BR.strftime('%d/%m/%Y %H:%M:%S')
+
+    def __init__(self, nome, cpf, agencia, num_conta) -> None:
         self.nome   = nome
         self.cpf    = cpf
         self.saldo  = 0
-        self.limite = None # ou 0
+        self.limite = None
+        self.agencia = agencia
+        self.num_conta = num_conta
+        self.transacoes = []
     
     def consultar_saldo (self):
         print('Seu saldo atual é de R${:,.2f}'.format(self.saldo)) 
     
     def depositar (self, valor):
         self.saldo += valor
-        print('Você depositou {}. Seu saldo atual é de R${:,.2f}'.format(valor, self.saldo)) 
+        self.transacoes.append((valor, self.saldo, ContaCorrente._data_hora()))
     
     def sacar (self, valor):
         if self.saldo - valor < self._limite_conta(): 
@@ -22,9 +34,6 @@ class ContaCorrente():
         else:
             self.saldo -= valor
             print('Você sacou {}. Seu saldo atual é de R${:,.2f}'.format(valor, self.saldo))
-            # self.consultar_saldo()
-
-#o underline indica que tal método é usada apenas na parte da classe e não pode ser utilizado na seção de programa - método privado
 
     def _limite_conta(self):
         self.limite = -1000
@@ -33,13 +42,18 @@ class ContaCorrente():
     def consultar_limite_cheque_especial(self):
         print('Seu limite de cheque especial é de R${:,.2f}'.format(self._limite_conta())) 
 
+    def consultar_historico_transacoes(self):
+        print('Histórico de transações: ')
+        print('Valor, Saldo, Data e Hora')
+        for transacoes in self.transacoes:
+            print(transacoes)
+
 
 #programa
 
-conta_vinicius = ContaCorrente("Marcus Vinicius", 15311742720)
-# print(conta_vinicius.nome, conta_vinicius.cpf, conta_vinicius.saldo)
-
+conta_vinicius = ContaCorrente("Marcus Vinicius", 15311742720, 2784, 40083234)
 print(conta_vinicius.depositar(100))
 print(conta_vinicius.sacar(1100))
-conta_vinicius.consultar_limite_cheque_especial()
+conta_vinicius.consultar_historico_transacoes()
+
 
