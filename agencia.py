@@ -1,5 +1,6 @@
 import os
 os.system('cls')
+from random import randint
 
 class Agencia:
     def __init__(self, telefone, cnpj, numero) -> None:
@@ -27,15 +28,22 @@ class Agencia:
 
 
 class AgenciaVirtual(Agencia):
-    pass
-
+    
+    def __init__(self, site, telefone, cnpj) -> None:
+        super().__init__(telefone, cnpj, 1000)
+        self.site = site
+        self.caixa = 1000000
 
 class AgenciaComum(Agencia):
-    pass
+    
+    def __init__(self, telefone, cnpj) -> None:
+        super().__init__(telefone, cnpj, numero = randint(1000, 9999))
+        self.caixa = 1000000
 
 
 class AgenciaPremium(Agencia):
-    pass
-
+    def __init__(self, telefone, cnpj) -> None:
+        super().__init__(telefone, cnpj, numero = randint(1000, 9999))
+        self.caixa = 10000000
 
 
