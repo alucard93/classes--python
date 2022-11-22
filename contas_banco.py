@@ -86,8 +86,19 @@ class CartaoCredito:
         self.validade       = '{}/{}'.format(CartaoCredito._data_hora().month, CartaoCredito._data_hora().year + 4)  
         self.code_seguranca = '{}{}{}'.format(randint(0,9), randint(0,9), randint(0,9))    #randint(100, 999)
         self.limite         = 1000
+        self._senha         = '1234'
         self.conta_corrente = conta_corrente
         conta_corrente.cartoes.append(self )
+    
+    @property
+    def senha(self):
+        return self._senha
+    @senha.setter
+    def senha(self, valor):
+        if len(valor) == 4 and valor.isnumeric():
+            self._senha = valor
+        else:
+            print('Nova senha inválida')
 
 #programa
 
