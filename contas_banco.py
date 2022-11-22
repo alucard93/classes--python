@@ -1,5 +1,5 @@
 from datetime import datetime
-import pytz 
+import pytz     #pip3 install pytz
 import os
 os.system('cls')
 
@@ -47,13 +47,35 @@ class ContaCorrente():
         print('Valor, Saldo, Data e Hora')
         for transacoes in self.transacoes:
             print(transacoes)
+    
+    def transferir(self, valor, conta_destino):
+        self.saldo -= valor
+        self.transacoes.append((-valor, self.saldo, ContaCorrente._data_hora()))
+        conta_destino.saldo += valor
+        conta_destino.transacoes.append((+valor, conta_destino.saldo, ContaCorrente._data_hora()))
 
 
 #programa
 
 conta_vinicius = ContaCorrente("Marcus Vinicius", 15311742720, 2784, 40083234)
-print(conta_vinicius.depositar(100))
-print(conta_vinicius.sacar(1100))
+
+print(conta_vinicius.depositar(10000))
+
+# print(conta_vinicius.sacar(1100))
+
+print('-' * 39)
+
 conta_vinicius.consultar_historico_transacoes()
 
+print('-' * 39)
+
+conta_mae_vinicius = ContaCorrente('Dalva', '00505802765', 2134, 4112346)
+
+conta_vinicius.transferir(500, conta_mae_vinicius)
+
+conta_vinicius.consultar_saldo()
+conta_mae_vinicius.consultar_saldo()
+
+conta_vinicius.consultar_historico_transacoes()
+conta_mae_vinicius.consultar_historico_transacoes()
 
