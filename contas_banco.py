@@ -107,8 +107,10 @@ cartao_vinicius = CartaoCredito('Vinicius', conta_vinicius)
 # print(cartao_vinicius.titular)
 # print(cartao_vinicius.conta_corrente._num_conta)
 # print(conta_vinicius.cartoes[0].numero)
-print(cartao_vinicius.validade)
-print(cartao_vinicius.numero)
+# print(cartao_vinicius.validade)
+# print(cartao_vinicius.numero)
+print(conta_vinicius.__dict__)
+print(cartao_vinicius.__dict__)
 
 # print(conta_vinicius.depositar(10000))
 
