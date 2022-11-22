@@ -33,6 +33,15 @@ class AgenciaVirtual(Agencia):
         super().__init__(telefone, cnpj, 1000)
         self.site = site
         self.caixa = 1000000
+        self.caixa_paypal = 0
+
+    def depositar_paypal(self, valor):
+        self.caixa -= valor
+        self.caixa_paypal += valor
+
+    def sacar_paypal(self, valor):
+        self.caixa += valor
+        self.caixa_paypal -= valor
 
 class AgenciaComum(Agencia):
     

@@ -53,3 +53,7 @@ print(agencia_comum.verificar_caixa())
 
 agencia_premiun = AgenciaPremium(111111111, 13234554756364)
 agencia_premiun.verificar_caixa()
+
+
+agencia_virtual.depositar_paypal(20000)
+print(agencia_virtual.verificar_caixa())
